@@ -32,7 +32,7 @@ We strongly recommend installing everything via Conda. Below is the list of requ
 
 ## Input data
 
-Our integration framework takes two or more co-assayed single-cell datasets as input. The co-assayed single-cell datasets are required to share one modality. For each dataset, 1) a processed file for each modality and 2) metadata of cells are required. The processed file will be internally generalized to a cell-by-feature matrix. For example, the matrix is the expression count matrix for scRNA-seq, where each gene is a feature; the scATAC profiles of multiple chromosomes will be concatenated along chromosomes and each feature is one genomic locus at a particular chromosome; the scHi-C contact map for each cell will be flattened into a vector and concatenated just as scATAC profiles.
+Our integration framework takes two or more co-assayed single-cell datasets as input. The co-assayed single-cell datasets are required to share one modality. For each dataset, 1) a processed file for each modality and 2) metadata of cells are required. The processed file will be internally generalized to a cell-by-feature matrix. For example, the matrix is the expression count matrix for scRNA-seq, where each gene is a feature; the scATAC profiles of multiple chromosomes will be concatenated along chromosomes and each feature is one genomic locus at a particular chromosome; the scHi-C contact map for each cell will be flattened into a vector and concatenated just as scATAC profiles, where each feature is a locus pair.
 
 ## Overview of the framework
 
@@ -42,4 +42,9 @@ The framework has two major steps
 
 ## Examples
 
-As an example, we integrate two datasets: the GAGE-seq data and the Paired-seq data that share the scRNA modality. We use Seurat and the K-NN regression model in this example.
+As an example, we integrate two datasets: the GAGE-seq data and the Paired-seq data that share the scRNA modality. We use Seurat and the K-NN regression model in this example. The two major steps in the framework are implemented in the notebooks [integrate-PairedTag-Seurat-mBC.ipynb](./scripts_analysis/integrate-PairedTag-Seurat-mBC.ipynb) and [integrate-PairedTag-Seurat-mBC-post.ipynb](./scripts_analysis/integrate-PairedTag-Seurat-mBC-post.ipynb), respectively.
+
+In addition to the framework, we also included example analyses enabled by the integration in [integrate-PairedTag-Seurat-mBC-post.ipynb](./scripts_analysis/integrate-PairedTag-Seurat-mBC-post.ipynb). Specifically, in section 5, we investigate the joint influence of 3D genome structure and accessibility on expression, and divide genes into 4 groups based on the influence patterns. In section 6, we visualize the differential accessibility at a user-selected region between inhibitory subtypes.
+
+# Contact
+Please email [tianming@andrew.cmu.edu](tianming@andrew.cmu.edu) or raise an issue in the github repository with any questions about installation or usage.
